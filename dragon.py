@@ -55,7 +55,7 @@ last_shot_red = False
 shoot_cooldown = FPS
 # Dragon values
 dragon = pygame.Rect(display.get_width() - 78, 3 * display.get_height() // 4 - 96, 54, 96)
-dragon_hp = 1500
+dragon_hp = 2000
 dragon_timer = 5 * FPS // 2
 attacks = {'projectile': PROJECTILEEVENT, 'wall': WALLEVENT}
 projectiles = []
@@ -264,7 +264,7 @@ while True:
         if collides > -1:
             projectiles.remove(projectile)
         if projectile[0].colliderect(dragon) and dragon_hp > 0 and dragon_timer < 2 * FPS and player_hp > 0:
-            dragon_hp -= 50
+            dragon_hp -= 40
             dragon_hurt_sound.play()
             projectiles.remove(projectile)
     # Rendering in to the display
