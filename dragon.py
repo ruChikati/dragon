@@ -116,8 +116,8 @@ while True:
                         shoot_cooldown = FPS
             if event.key == pygame.K_e:
                 if slomo_cooldown <= 0:
-                    slomo = 3 * FPS
-                    slomo_cooldown = 13 * FPS
+                    slomo = 5 * FPS
+                    slomo_cooldown = 15 * FPS
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 movement['u'] = False
