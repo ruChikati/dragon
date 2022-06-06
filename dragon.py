@@ -36,6 +36,7 @@ moved = [0, 0]
 g = 3/4
 acc = 0
 speed = 1
+projectile_speed = 8
 bullets = []
 
 shoot_sound = pygame.mixer.Sound(f'assets{os.sep}shoot.wav')
@@ -252,7 +253,7 @@ while True:
 
     for projectile in projectiles:
         if projectile[2] and player_hp > 0:
-            moving = [8 * dt if projectile[0].x < player.x + player.w // 2 else -8 * dt, 8 * dt if projectile[0].y < player.y + player.h // 2 else -8 * dt]
+            moving = [projectile_speed * dt if projectile[0].x < player.x + player.w // 2 else -projectile_speed * dt, projectile_speed * dt if projectile[0].y < player.y + player.h // 2 else -projectile_speed * dt]
             projectile[0].x += moving[0]
             projectile[0].y += moving[1]
         if projectile[0].bottom > 3 * display.get_height() // 4 or projectile[0].x < 0 or projectile[0].x > display.get_width():
@@ -314,7 +315,7 @@ while True:
         else:
             pygame.draw.rect(alpha_screen, (255, 255, 0), walls[1])
     if screen_shake > 0:
-        screen.blit(alpha_screen, (random.randint(-24, 24) * speed, random.randint(-24, 24) * speed), special_flags=pygame.BLEND_RGBA_MULT)
+        screen.blit(alpha_screen, (random.randint(-24, 24) * speed, random.randint(-24, 24) * speed))
     else:
         screen.blit(alpha_screen, (random.randint(-1, 1), random.randint(-1, 1)))
     display.blit(screen, (0, 0))
