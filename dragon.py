@@ -38,7 +38,7 @@ acc = 0
 speed = 1
 projectile_speed = 8
 bullets = []
-
+# Sounds
 shoot_sound = pygame.mixer.Sound(f'assets{os.sep}shoot.wav')
 shoot_sound.set_volume(0.5)
 dragon_hurt_sound = pygame.mixer.Sound(f'assets{os.sep}dragon_hurt.wav')
@@ -269,7 +269,7 @@ while True:
             dragon_hp -= 40
             dragon_hurt_sound.play()
             projectiles.remove(projectile)
-    # Rendering in to the display
+    # Rendering to the display
     if screen_shake > 0:
         screen.blit(title_surf, (display.get_width() // 2 - title_surf.get_width() // 2 + random.randint(-24, 24), display.get_height() // 2 - title_surf.get_height() // 2 + random.randint(-24, 24)))
         if dragon_hp <= 0:
@@ -284,7 +284,7 @@ while True:
             screen.blit(lose_surf, (display.get_width() // 2 - lose_surf.get_width() // 2 + random.randint(-1, 1), display.get_height() // 2 - lose_surf.get_height() // 2 - title_surf.get_height() + random.randint(-1, 1)))
     pygame.draw.rect(alpha_screen, (196, 94, 35), (0, 3 * display.get_height() // 4, display.get_width(), display.get_height() // 4))
     if player_hp > 0:
-        pygame.draw.rect(alpha_screen, (62 * player_hp / 1000, 220 * player_hp / 1000, 120 * player_hp / 1000), player)
+        pygame.draw.rect(alpha_screen, (62 * player_hp // 1000, 220 * player_hp // 1000, 120 * player_hp // 1000), player)
     for bullet in bullets:
         if bullet[1][0] == 'r':
             pygame.draw.rect(alpha_screen, (255, 0, 0), bullet[0])
@@ -298,7 +298,7 @@ while True:
             alpha_screen.blit(gun_red, (player.x + 9 * player.w // 10, player.y + 3 * player.h // 5))
             alpha_screen.blit(pygame.transform.flip(gun_yellow, True, False), (player.x + player.w // 10 - gun_yellow.get_width(), player.y + 3 * player.h // 5))
     if dragon_hp > 0:
-        pygame.draw.rect(alpha_screen, (220 * dragon_hp / 2000, 62 * dragon_hp / 2000, 83 * dragon_hp / 2000), dragon)
+        pygame.draw.rect(alpha_screen, (220 * dragon_hp // 2000, 62 * dragon_hp // 2000, 83 * dragon_hp // 2000), dragon)
     for projectile in projectiles:
         if projectile[1] == 'r':
             pygame.draw.rect(alpha_screen, (255, 0, 0), projectile[0])
