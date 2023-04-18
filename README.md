@@ -13,3 +13,6 @@ Shoot through the attacks with the corresponding bullets to negate them<br>
 **Prerequisites:**<br>
 python 3 (preferably 3.10+)<br>
 pygame 2 (`pip3 install pygame`)<br>
+
+**Run**<br>
+`python3 dragon.py`
