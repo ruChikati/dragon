@@ -36,7 +36,7 @@ moved = [0, 0]
 g = 3/4
 acc = 0
 speed = 1
-projectile_speed = 8
+projectile_speed = 4
 bullets = []
 # Sounds
 shoot_sound = pygame.mixer.Sound(f'assets{os.sep}shoot.wav')
@@ -57,7 +57,8 @@ last_shot_red = False
 shoot_cooldown = FPS
 # Dragon values
 dragon = pygame.Rect(display.get_width() - 78, 3 * display.get_height() // 4 - 96, 54, 96)
-dragon_hp = 2000
+dragon_hp = 1000
+max_dragon_hp = 1000
 dragon_timer = 5 * FPS // 2
 attacks = {'projectile': PROJECTILEEVENT, 'wall': WALLEVENT}
 projectiles = []
@@ -171,13 +172,13 @@ while True:
         if dragon_hp > 0 and player_hp > 0:
             player_hp -= 20
             player_hurt_sound.play()
-    # Handle timers
+    # Handle timersd
     if screen_shake > 0:
-        screen_shake -= 1 * speed
+        screen_shake -= speed
     if slomo_cooldown > 0:
-        slomo_cooldown -= 1 * speed
+        slomo_cooldown -= speed
     if shoot_cooldown > 0:
-        shoot_cooldown -= 1 * speed
+        shoot_cooldown -= speed
     if projectile_timer > 0:
         projectile_timer -= 1
     if slomo > 0:
@@ -186,7 +187,7 @@ while True:
     else:
         speed = 1
     if dragon_timer > 0:
-        dragon_timer -= 1 * speed
+        dragon_timer -= speed
     else:
         dragon_timer = 5 * FPS
         if dragon_hp > 0:
@@ -298,7 +299,7 @@ while True:
             alpha_screen.blit(gun_red, (player.x + 9 * player.w // 10, player.y + 3 * player.h // 5))
             alpha_screen.blit(pygame.transform.flip(gun_yellow, True, False), (player.x + player.w // 10 - gun_yellow.get_width(), player.y + 3 * player.h // 5))
     if dragon_hp > 0:
-        pygame.draw.rect(alpha_screen, (220 * dragon_hp // 2000, 62 * dragon_hp // 2000, 83 * dragon_hp // 2000), dragon)
+        pygame.draw.rect(alpha_screen, (220 * dragon_hp // max_dragon_hp, 62 * dragon_hp // max_dragon_hp, 83 * dragon_hp // max_dragon_hp), dragon)
     for projectile in projectiles:
         if projectile[1] == 'r':
             pygame.draw.rect(alpha_screen, (255, 0, 0), projectile[0])
