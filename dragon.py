@@ -1,4 +1,4 @@
-
+# TODO: redo in theta and add more features
 import os
 import random
 import sys
@@ -51,14 +51,14 @@ gun_red = pygame.Surface((64, 16), pygame.SRCALPHA)
 pygame.draw.rect(gun_red, (255, 0, 0), (0, 0, 64, 8))
 pygame.draw.rect(gun_red, (255, 0, 0), (0, 0, 8, 16))
 player = pygame.Rect(10 + gun_red.get_width(), 3 * display.get_height() // 4 - 96, 54, 96)
-player_hp = 1000
+player_hp = 1250
 player_flip = False
 last_shot_red = False
 shoot_cooldown = FPS
 # Dragon values
 dragon = pygame.Rect(display.get_width() - 78, 3 * display.get_height() // 4 - 96, 54, 96)
-dragon_hp = 1000
-max_dragon_hp = 1000
+dragon_hp = 2000
+max_dragon_hp = 2000
 dragon_timer = 5 * FPS // 2
 attacks = {'projectile': PROJECTILEEVENT, 'wall': WALLEVENT}
 projectiles = []
