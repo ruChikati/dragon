@@ -4,10 +4,13 @@ import pygame
 
 import theta
 
+pygame.display.init()
+
 theta.set_default_data_path()
-game = theta.Game(120)
+game = theta.Game(pygame.display.Info().current_w, pygame.display.Info().current_h, 120)
 sfx = theta.sfx.SFXManager()
 anims = theta.animation.AnimationManager()
+worlds = theta.level.WorldManager(game)
 
 game.set_name("The Dragon")
 game.set_icon("./data/icon.png")
@@ -39,4 +42,5 @@ while True:
                         pygame.quit()
                         sys.exit()
 
+    worlds.update(game.dt)
     game.update()
